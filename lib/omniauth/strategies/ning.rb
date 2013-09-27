@@ -7,7 +7,7 @@ module OmniAuth
 
         DEFAULT_ENDPOINT = 'https://external.ningapis.com/xn/rest/YRGUniverse/1.0'
         option :name, "ning"
-        option :fields, :email
+        option :fields, [:email]
 
         # This is where you pass the options you would pass when
         # initializing your consumer from the OAuth gem.
@@ -16,15 +16,6 @@ module OmniAuth
           authorize_url:  "/Token",
           token_url:      "/Token"
         }
-
-      def request_phase
-        form = OmniAuth::Form.new(:title => "User Info", :url => callback_path)
-        options.fields.each do |field|
-          form.text_field field.to_s.capitalize.gsub("_", " "), field.to_s
-        end
-        form.button "Sign In"
-        form.to_response
-      end
 
       # These are called after authentication has succeeded. If
       # possible, you should try to set the UID without making
