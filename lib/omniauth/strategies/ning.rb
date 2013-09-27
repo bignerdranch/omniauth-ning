@@ -7,7 +7,7 @@ module OmniAuth
 
         DEFAULT_ENDPOINT = 'https://external.ningapis.com/xn/rest/YRGUniverse/1.0'
         option :name, "ning"
-        option :fields, [:email]
+        option :fields, :email
 
         # This is where you pass the options you would pass when
         # initializing your consumer from the OAuth gem.
