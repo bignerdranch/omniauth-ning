@@ -24,22 +24,6 @@ module OmniAuth
         end
       end
 
-      # These are called after authentication has succeeded. If
-      # possible, you should try to set the UID without making
-      # additional calls (if the user id is returned with the token
-      # or as a URI parameter). This may not be possible with all
-      # providers.
-      uid{ request.params['entry']['author'] }
-
-      info do
-        {
-          author: params['entry']['author'],
-          oauth_consumer_key: params['entry']['oauth_consumer_key'],
-          oauth_token: params['entry']['oauth_token'],
-          oauth_token_secret: params['entry']['oauth_token_secret']
-        }
-      end
-
       def call env
         env['ning.strategy'] = self
         super
